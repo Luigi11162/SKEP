@@ -1,0 +1,14 @@
+# auto-generated
+[Libraries]
+work.files = [
+	'ChaosMachine.vhd',
+	'RecoveryProcedure_Hamming74.vhd',
+	'SecureSketch_Hamming74.vhd'
+]
+[libraries.work]
+files = [
+	'ChaosMachine.vhd',
+	'RecoveryProcedure_Hamming74.vhd',
+	'SecureSketch_Hamming74.vhd'
+]
+# auto-generated-end

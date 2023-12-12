@@ -1,0 +1,12 @@
+﻿<Project>
+  <ItemGroup>
+    <File Include="ChaosMachine.vhd" />
+    <File Include="RecoveryProcedure_Hamming74.vhd" Passive="true" />
+    <File Include="SecureSketch_Hamming74.vhd" />
+  </ItemGroup>
+  <PropertyGroup>
+    <HardwareStartPath>ChaosMachine.vhd</HardwareStartPath>
+    <SelectedFpga>MAX1000</SelectedFpga>
+    <IoVoltage>3.3V</IoVoltage>
+  </PropertyGroup>
+</Project>
