@@ -32,7 +32,7 @@ BEGIN
     CONSTANT a : STD_LOGIC_VECTOR(3 DOWNTO 0) := "1011";
     CONSTANT b : STD_LOGIC_VECTOR(3 DOWNTO 0) := "1101";
     CONSTANT c : STD_LOGIC_VECTOR(3 DOWNTO 0) := "0110";
-    VARIABLE counter : NATURAL RANGE 0 TO 4 := 0;
+    VARIABLE counter : NATURAL RANGE 0 TO 5 := 0;
     
     BEGIN
             -- Assumendo che il segnale di CLOCK sia asserito, viene sviluppata l'equazione che descrive il sistema caotico
@@ -40,16 +40,17 @@ BEGIN
         IF rising_edge(clk) THEN
             CASE counter IS
                 WHEN 0 =>
+                    x <= x_in;
                     IF reset = '1' OR x = "UUUU" THEN
-                     -- Condizione iniziale del sistema imposta dopo l'asserzione del segnale di RESET
-                        x <= x_in;
+                        -- Condizione iniziale del sistema imposta dopo l'asserzione del segnale di RESET
+                        x <= "1111";
                     END IF;
-                    counter := counter+1;
-                WHEN 1 =>
+                    counter := counter + 1;
+                WHEN 1 to 4 =>
                     IF x = "0000" THEN
                         x <= "1111";
                     ELSE
-                        x <= (x XOR a) AND (x XOR b) AND (x XOR c);
+                        x(counter-1) <= (x(counter-1) XOR a(counter-1)) AND (x(counter-1) XOR b(counter-1)) AND (x(counter-1) XOR c(counter-1));
                     END IF;
 
                     counter := counter +1;

@@ -1,5 +1,6 @@
 ﻿<Project>
   <ItemGroup>
+    <File Include="ArbiterPUF.vhd" />
     <File Include="ChaosMachine.vhd" />
     <File Include="RecoveryProcedure_Hamming74.vhd" Passive="true" />
     <File Include="SecureSketch_Hamming74.vhd" />
