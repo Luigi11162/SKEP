@@ -1,14 +1,22 @@
 # auto-generated
 [Libraries]
 work.files = [
+	'ArbiterPUF.vhd',
 	'ChaosMachine.vhd',
+	'FlipFlop.vhd',
+	'Mux_2to1.vhd',
+	'Nor_P.vhd',
 	'RChaosMachine.vhd',
 	'RecoveryProcedure_Hamming74.vhd',
 	'SecureSketch_Hamming74.vhd'
 ]
 [libraries.work]
 files = [
+	'ArbiterPUF.vhd',
 	'ChaosMachine.vhd',
+	'FlipFlop.vhd',
+	'Mux_2to1.vhd',
+	'Nor_P.vhd',
 	'RChaosMachine.vhd',
 	'RecoveryProcedure_Hamming74.vhd',
 	'SecureSketch_Hamming74.vhd'

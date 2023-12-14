@@ -17,8 +17,12 @@ set_global_assignment -name FAMILY "MAX 10"
 set_global_assignment -name DEVICE 10M08SAU169C8G
 set_global_assignment -name TOP_LEVEL_ENTITY ChaosMachine
 set_global_assignment -name NUM_PARALLEL_PROCESSORS 2
+set_global_assignment -name VHDL_FILE ArbiterPUF.vhd
 set_global_assignment -name VHDL_FILE ChaosMachine.vhd
-set_global_assignment -name VHDL_FILE RChaosMachine.vhd
+set_global_assignment -name VHDL_FILE FlipFlop.vhd
+set_global_assignment -name VHDL_FILE Mux_2to1.vhd
+set_global_assignment -name VHDL_FILE Nor_P.vhd
+set_global_assignment -name VHDL_FILE RecoveryProcedure_Hamming74.vhd
 set_global_assignment -name VHDL_FILE SecureSketch_Hamming74.vhd
 set_location_assignment PIN_H6 -to clk
 set_location_assignment PIN_H8 -to random_out[0]
