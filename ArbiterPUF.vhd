@@ -3,6 +3,9 @@ USE IEEE.STD_LOGIC_1164.ALL;
 
 ENTITY arbiter_puf IS
     PORT(
+        delay_n : IN STD_LOGIC;
+        delay : IN STD_LOGIC;
+        clock : IN STD_LOGIC;
         challenge : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
         response : OUT STD_LOGIC
     );
@@ -21,7 +24,10 @@ ARCHITECTURE Behavioral OF arbiter_puf IS
     SIGNAL res_n : STD_LOGIC;
     
     COMPONENT mux_2to1 IS
-        PORT ( sel : IN  STD_LOGIC; -- select input
+        PORT (
+            delay : STD_LOGIC;
+            clock : IN STD_LOGIC;
+            sel : IN  STD_LOGIC;    -- select input
             a : IN  STD_LOGIC;      -- input
             b : IN STD_LOGIC;       -- input
             x : OUT STD_LOGIC       -- output
@@ -30,6 +36,7 @@ ARCHITECTURE Behavioral OF arbiter_puf IS
 
     COMPONENT flip_flop IS
         PORT (
+            clock : IN STD_LOGIC;
             s : IN STD_LOGIC;
             r : IN STD_LOGIC;
             q : OUT STD_LOGIC;
@@ -41,6 +48,8 @@ BEGIN
 
     mux_0: mux_2to1
     PORT MAP(
+        delay => delay_n,
+        clock => clock,
         sel => challenge(3),
         a=>'1',
         b=>'1',
@@ -48,6 +57,8 @@ BEGIN
     );
     mux_1: mux_2to1
     PORT MAP(
+        delay => delay,
+        clock => clock,
         sel => challenge(3),
         a=>'1',
         b=>'1',
@@ -55,6 +66,8 @@ BEGIN
     );
     mux_2: mux_2to1
     PORT MAP(
+        delay => delay_n,
+        clock => clock,
         sel => challenge(2),
         a=> out_mux_0,
         b=>out_mux_1,
@@ -62,6 +75,8 @@ BEGIN
     );
     mux_3: mux_2to1
     PORT MAP(
+        delay => delay,
+        clock => clock,
         sel => challenge(2),
         a=>out_mux_1,
         b=>out_mux_0,
@@ -69,6 +84,8 @@ BEGIN
     );
     mux_4: mux_2to1
     PORT MAP(
+        delay => delay_n,
+        clock => clock,
         sel => challenge(1),
         a=>out_mux_2,
         b=>out_mux_3,
@@ -76,6 +93,8 @@ BEGIN
     );
     mux_5: mux_2to1
     PORT MAP(
+        delay => delay,
+        clock => clock,
         sel => challenge(1),
         a=>out_mux_3,
         b=>out_mux_2,
@@ -83,6 +102,8 @@ BEGIN
     );
     mux_6: mux_2to1
     PORT MAP(
+        delay => delay_n,
+        clock => clock,
         sel => challenge(0),
         a=>out_mux_4,
         b=>out_mux_5,
@@ -90,6 +111,8 @@ BEGIN
     );
     mux_7: mux_2to1
     PORT MAP(
+        delay => delay,
+        clock => clock,
         sel => challenge(0),
         a=>out_mux_5,
         b=>out_mux_4,
@@ -97,6 +120,7 @@ BEGIN
     );
     flip_flop_0: flip_flop
     PORT MAP(
+        clock => clock,
         s => out_mux_6,
         r => out_mux_7,
         q => res,

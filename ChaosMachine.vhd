@@ -16,14 +16,16 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 -- X_IN è l'input
 -- RANDOM_OUT è l'output in seguito all'esecuzione dell'equazione che descrive il sistema caotico
 
-ENTITY ChaosMachine IS
-    PORT ( clk : IN STD_LOGIC;
+ENTITY chaos_machine IS
+    PORT ( 
+        clk : IN STD_LOGIC;
         reset : IN STD_LOGIC;
         x_in : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-        random_out : OUT STD_LOGIC_VECTOR(3 DOWNTO 0));
-END ChaosMachine;
+        random_out : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
+    );
+END chaos_machine;
 
-ARCHITECTURE Behavioral OF ChaosMachine IS
+ARCHITECTURE Behavioral OF chaos_machine IS
     SIGNAL x : STD_LOGIC_VECTOR(3 DOWNTO 0);
 
 BEGIN
