@@ -3,7 +3,7 @@ USE IEEE.STD_LOGIC_1164.ALL;
 
 ENTITY flip_flop IS
     PORT (
-        clk : IN STD_LOGIC;
+        clock : IN STD_LOGIC;
         s : IN  STD_LOGIC;      -- input
         r : IN STD_LOGIC;       -- input
         q : OUT STD_LOGIC;      -- output
@@ -27,7 +27,7 @@ ARCHITECTURE Behavioral OF flip_flop IS
 BEGIN
         nor_1 : nor_p 
         PORT MAP(
-            clock => clk,
+            clock => clock,
             a=>s,
             b=>out_nor_2,
             c=>q_n,
@@ -36,7 +36,7 @@ BEGIN
         
         nor_2 : nor_p 
         PORT MAP(
-            clock => clk,
+            clock => clock,
             a=>r,
             b=>out_nor_1,
             c=>q,

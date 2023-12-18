@@ -8,8 +8,8 @@ ENTITY mux_2to1 IS
         sel : IN  STD_LOGIC;    -- select input
         a : IN  STD_LOGIC;      -- input
         b : IN STD_LOGIC;       -- input
-        x : OUT STD_LOGIC
-    );     -- output
+        x : OUT STD_LOGIC       -- output
+    );
 END mux_2to1;
 
 ARCHITECTURE Behavioral OF mux_2to1 IS

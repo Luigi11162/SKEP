@@ -3,11 +3,15 @@ USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.STD_LOGIC_ARITH.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 USE IEEE.NUMERIC_STD.ALL;
-ENTITY RecoveryProcedure_Hamming74 IS
-    PORT ( sketch : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
-        recovered_data : OUT STD_LOGIC_VECTOR(6 DOWNTO 0));
-END RecoveryProcedure_Hamming74;
-ARCHITECTURE Behavioral OF RecoveryProcedure_Hamming74 IS
+
+ENTITY recovery_procedure_hamming_74 IS
+    PORT (
+        sketch : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
+        recovered_data : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
+    );
+END recovery_procedure_hamming_74;
+
+ARCHITECTURE Behavioral OF recovery_procedure_hamming_74 IS
     SIGNAL message_data : STD_LOGIC_VECTOR(3 DOWNTO 0);
     SIGNAL parity_data : STD_LOGIC_VECTOR(2 DOWNTO 0);
     SIGNAL control_code : STD_LOGIC_VECTOR(2 DOWNTO 0);

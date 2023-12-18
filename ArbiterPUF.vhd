@@ -3,7 +3,6 @@ USE IEEE.STD_LOGIC_1164.ALL;
 
 ENTITY arbiter_puf IS
     PORT(
-        delay_n : IN STD_LOGIC;
         delay : IN STD_LOGIC;
         clock : IN STD_LOGIC;
         challenge : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -22,6 +21,7 @@ ARCHITECTURE Behavioral OF arbiter_puf IS
     SIGNAL out_mux_7 : STD_LOGIC;
     SIGNAL res : STD_LOGIC;
     SIGNAL res_n : STD_LOGIC;
+    SIGNAL delay_n : STD_LOGIC := not delay;
     
     COMPONENT mux_2to1 IS
         PORT (
@@ -55,6 +55,7 @@ BEGIN
         b=>'1',
         x=>out_mux_0
     );
+    
     mux_1: mux_2to1
     PORT MAP(
         delay => delay,
@@ -64,6 +65,7 @@ BEGIN
         b=>'1',
         x=>out_mux_1
     );
+    
     mux_2: mux_2to1
     PORT MAP(
         delay => delay_n,
@@ -73,6 +75,7 @@ BEGIN
         b=>out_mux_1,
         x=>out_mux_2
     );
+    
     mux_3: mux_2to1
     PORT MAP(
         delay => delay,
@@ -82,6 +85,7 @@ BEGIN
         b=>out_mux_0,
         x=>out_mux_3
     );
+    
     mux_4: mux_2to1
     PORT MAP(
         delay => delay_n,
@@ -91,6 +95,7 @@ BEGIN
         b=>out_mux_3,
         x=>out_mux_4
     );
+    
     mux_5: mux_2to1
     PORT MAP(
         delay => delay,
@@ -100,6 +105,7 @@ BEGIN
         b=>out_mux_2,
         x=>out_mux_5
     );
+    
     mux_6: mux_2to1
     PORT MAP(
         delay => delay_n,
@@ -109,6 +115,7 @@ BEGIN
         b=>out_mux_5,
         x=>out_mux_6
     );
+    
     mux_7: mux_2to1
     PORT MAP(
         delay => delay,
@@ -118,6 +125,7 @@ BEGIN
         b=>out_mux_4,
         x=>out_mux_7
     );
+    
     flip_flop_0: flip_flop
     PORT MAP(
         clock => clock,

@@ -15,22 +15,27 @@ set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
 set_global_assignment -name FAMILY "MAX 10"
 set_global_assignment -name DEVICE 10M08SAU169C8G
-set_global_assignment -name TOP_LEVEL_ENTITY ChaosMachine
+set_global_assignment -name TOP_LEVEL_ENTITY cpa_scheme
 set_global_assignment -name NUM_PARALLEL_PROCESSORS 2
 set_global_assignment -name VHDL_FILE ArbiterPUF.vhd
+set_global_assignment -name VHDL_FILE CPAScheme.vhd
 set_global_assignment -name VHDL_FILE ChaosMachine.vhd
 set_global_assignment -name VHDL_FILE FlipFlop.vhd
 set_global_assignment -name VHDL_FILE Mux_2to1.vhd
 set_global_assignment -name VHDL_FILE Nor_P.vhd
 set_global_assignment -name VHDL_FILE RecoveryProcedure_Hamming74.vhd
 set_global_assignment -name VHDL_FILE SecureSketch_Hamming74.vhd
-set_location_assignment PIN_H6 -to clk
-set_location_assignment PIN_H8 -to random_out[0]
-set_location_assignment PIN_K10 -to random_out[1]
-set_location_assignment PIN_H5 -to random_out[2]
-set_location_assignment PIN_H4 -to random_out[3]
 set_location_assignment PIN_J1 -to reset
-set_location_assignment PIN_J2 -to x_in[0]
-set_location_assignment PIN_L12 -to x_in[1]
-set_location_assignment PIN_J12 -to x_in[2]
-set_location_assignment PIN_J13 -to x_in[3]
+set_location_assignment PIN_H8 -to challenge[0]
+set_location_assignment PIN_K10 -to challenge[1]
+set_location_assignment PIN_H5 -to challenge[2]
+set_location_assignment PIN_H4 -to challenge[3]
+set_location_assignment PIN_J2 -to ciphertext[0]
+set_location_assignment PIN_L12 -to ciphertext[1]
+set_location_assignment PIN_J12 -to ciphertext[2]
+set_location_assignment PIN_J13 -to ciphertext[3]
+set_location_assignment PIN_K11 -to message[0]
+set_location_assignment PIN_K12 -to message[1]
+set_location_assignment PIN_J10 -to message[2]
+set_location_assignment PIN_H10 -to message[3]
+set_location_assignment PIN_H6 -to clock

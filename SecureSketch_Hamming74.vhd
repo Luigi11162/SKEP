@@ -2,12 +2,15 @@ LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.STD_LOGIC_ARITH.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
-ENTITY SecureSketch_Hamming74 IS
-    PORT ( input_data : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-        secure_sketch : OUT STD_LOGIC_VECTOR(6 DOWNTO 0));
-END SecureSketch_Hamming74;
 
-ARCHITECTURE Behavioral OF SecureSketch_Hamming74 IS
+ENTITY secure_sketch_hamming_74 IS
+    PORT ( 
+        input_data : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+        secure_sketch : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
+    );
+END secure_sketch_hamming_74;
+
+ARCHITECTURE Behavioral OF secure_sketch_hamming_74 IS
 BEGIN
     PROCESS(input_data)
     BEGIN
