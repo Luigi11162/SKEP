@@ -1,23 +1,24 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY cpa_scheme IS
+ENTITY enc_scheme IS
     PORT (
         reset : IN STD_LOGIC;
         clock : IN STD_LOGIC;
         challenge : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
         message : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-        ciphertext : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
+        ciphertext : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+        helper_data : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
     );
-END cpa_scheme;
+END enc_scheme;
 
-ARCHITECTURE Behavioral OF cpa_scheme IS
+ARCHITECTURE Behavioral OF enc_scheme IS
     SIGNAL key : STD_LOGIC_VECTOR(3 DOWNTO 0);
     SIGNAL out_puf_0 : STD_LOGIC;
     SIGNAL out_puf_1 : STD_LOGIC;
     SIGNAL out_puf_2 : STD_LOGIC;
     SIGNAL out_puf_3 : STD_LOGIC;
-    SIGNAL in_chaos_machine : STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SIGNAL puf_response : STD_LOGIC_VECTOR(3 DOWNTO 0);
     
     COMPONENT arbiter_puf IS
         PORT(
@@ -39,15 +40,9 @@ ARCHITECTURE Behavioral OF cpa_scheme IS
     
     COMPONENT secure_sketch_hamming_74 IS
         PORT(
+            clock : IN STD_LOGIC;
             input_data : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-            secure_sketch : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
-        );
-    END COMPONENT;
-    
-    COMPONENT recovery_procedure_hamming_74 IS
-        PORT(
-            sketch : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
-            recovered_data : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
+            parity_data : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
         );
     END COMPONENT;
     
@@ -85,17 +80,24 @@ BEGIN
         response => out_puf_3
     );
     
-    in_chaos_machine(3) <= out_puf_3;
-    in_chaos_machine(2) <= out_puf_2;
-    in_chaos_machine(1) <= out_puf_1;
-    in_chaos_machine(0) <= out_puf_0;
+    puf_response(3) <= out_puf_3;
+    puf_response(2) <= out_puf_2;
+    puf_response(1) <= out_puf_1;
+    puf_response(0) <= out_puf_0;
     
     chaos_machine_0: chaos_machine
     PORT MAP(
         clk => clock,
         reset => reset,
-        x_in => in_chaos_machine,
+        x_in => puf_response,
         random_out => key
+    );
+    
+    secure_sketch_hamming_74_0: secure_sketch_hamming_74
+    PORT MAP(
+        clock => clock,
+        input_data => puf_response,
+        parity_data => helper_data
     );
     
     ciphertext <= message XOR key;

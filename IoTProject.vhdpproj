@@ -1,7 +1,8 @@
 ﻿<Project>
   <ItemGroup>
     <File Include="ArbiterPUF.vhd" />
-    <File Include="CPAScheme.vhd" />
+    <File Include="DecScheme.vhd" />
+    <File Include="EncScheme.vhd" />
     <File Include="ChaosMachine.vhd" />
     <File Include="FlipFlop.vhd" />
     <File Include="Mux_2to1.vhd" />
