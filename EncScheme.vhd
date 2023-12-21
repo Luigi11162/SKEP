@@ -42,7 +42,7 @@ ARCHITECTURE Behavioral OF enc_scheme IS
         PORT(
             clock : IN STD_LOGIC;
             input_data : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-            parity_data : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
+            parity_data : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
         );
     END COMPONENT;
     

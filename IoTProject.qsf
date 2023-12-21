@@ -15,11 +15,12 @@ set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
 set_global_assignment -name FAMILY "MAX 10"
 set_global_assignment -name DEVICE 10M08SAU169C8G
-set_global_assignment -name TOP_LEVEL_ENTITY cpa_scheme
+set_global_assignment -name TOP_LEVEL_ENTITY enc_scheme
 set_global_assignment -name NUM_PARALLEL_PROCESSORS 2
 set_global_assignment -name VHDL_FILE ArbiterPUF.vhd
-set_global_assignment -name VHDL_FILE CPAScheme.vhd
 set_global_assignment -name VHDL_FILE ChaosMachine.vhd
+set_global_assignment -name VHDL_FILE DecScheme.vhd
+set_global_assignment -name VHDL_FILE EncScheme.vhd
 set_global_assignment -name VHDL_FILE FlipFlop.vhd
 set_global_assignment -name VHDL_FILE Mux_2to1.vhd
 set_global_assignment -name VHDL_FILE Nor_P.vhd
@@ -39,3 +40,6 @@ set_location_assignment PIN_K12 -to message[1]
 set_location_assignment PIN_J10 -to message[2]
 set_location_assignment PIN_H10 -to message[3]
 set_location_assignment PIN_H6 -to clock
+set_location_assignment PIN_H13 -to helper_data[0]
+set_location_assignment PIN_G12 -to helper_data[1]
+set_location_assignment PIN_B11 -to helper_data[2]

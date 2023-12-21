@@ -3,6 +3,7 @@ USE IEEE.STD_LOGIC_1164.ALL;
 
 ENTITY mux_2to1 IS
     PORT (
+        reset : IN STD_LOGIC;
         delay : IN STD_LOGIC;   -- delay
         clock : IN STD_LOGIC;   -- clock
         sel : IN  STD_LOGIC;    -- select input
@@ -19,17 +20,23 @@ BEGIN
     VARIABLE delay2 : TIME;
     BEGIN
         IF rising_edge(clock) THEN
-            IF delay = '0' THEN
-                delay1 := 10 ns;
-                delay2 := 500 ns;
+            IF reset ='1' THEN
+                x <= '0';
             ELSE
-                delay1 := 500 ns;
-                delay2 := 10 ns;
-            END IF;
-            IF sel = '0' THEN
-                x <= TRANSPORT a AFTER delay1;
-            ELSE
-                x <= TRANSPORT b AFTER delay2;
+                IF delay = '0' THEN
+                    delay1 := 10 ns;
+                    delay2 := 500 ns;
+                ELSE
+                    delay1 := 500 ns;
+                    delay2 := 10 ns;
+                END IF;
+                IF sel = '0' THEN
+                    x <= TRANSPORT a AFTER delay1;
+                ELSIF sel ='1' THEN 
+                    x <= TRANSPORT b AFTER delay2;
+                ELSE 
+                    x <= '0';
+                END IF;
             END IF;
         END IF;
     END PROCESS;
