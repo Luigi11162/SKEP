@@ -8,7 +8,6 @@
     <File Include="FlipFlop.vhd" />
     <File Include="Mux_2to1.vhd" />
     <File Include="Nor_P.vhd" />
-    <File Include="RChaosMachine.vhd" Passive="true" />
     <File Include="RecoveryProcedure_Hamming74.vhd" />
     <File Include="SecureSketch_Hamming74.vhd" />
   </ItemGroup>
