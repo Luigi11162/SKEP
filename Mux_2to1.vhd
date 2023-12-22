@@ -24,11 +24,11 @@ BEGIN
                 x <= '0';
             ELSE
                 IF delay = '0' THEN
-                    delay1 := 10 ns;
+                    delay1 := 50 ns;
                     delay2 := 500 ns;
                 ELSE
                     delay1 := 500 ns;
-                    delay2 := 10 ns;
+                    delay2 := 50 ns;
                 END IF;
                 IF sel = '0' THEN
                     x <= TRANSPORT a AFTER delay1;

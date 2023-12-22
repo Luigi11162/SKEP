@@ -22,6 +22,7 @@ ARCHITECTURE Behavioral OF enc_scheme IS
     
     COMPONENT arbiter_puf IS
         PORT(
+            reset : IN STD_LOGIC;
             delay : IN STD_LOGIC;
             clock : IN STD_LOGIC;
             challenge : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -50,6 +51,7 @@ BEGIN
     
     arbiter_puf_0: arbiter_puf
     PORT MAP(
+        reset => reset,
         delay => '1',
         clock => clock,
         challenge => challenge,
@@ -58,6 +60,7 @@ BEGIN
     
     arbiter_puf_1: arbiter_puf
     PORT MAP(
+        reset => reset,
         delay => '0',
         clock => clock,
         challenge => challenge,
@@ -66,6 +69,7 @@ BEGIN
     
     arbiter_puf_2: arbiter_puf
     PORT MAP(
+        reset => reset,
         delay => '0',
         clock => clock,
         challenge => challenge,
@@ -74,6 +78,7 @@ BEGIN
     
     arbiter_puf_3: arbiter_puf
     PORT MAP(
+        reset => reset,
         delay => '1',
         clock => clock,
         challenge => challenge,

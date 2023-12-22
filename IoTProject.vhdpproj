@@ -1,6 +1,7 @@
 ﻿<Project>
   <ItemGroup>
     <File Include="ArbiterPUF.vhd" />
+    <File Include="CPAScheme.vhd" />
     <File Include="ChaosMachine.vhd" />
     <File Include="DecScheme.vhd" />
     <File Include="EncScheme.vhd" />
@@ -12,7 +13,7 @@
     <File Include="SecureSketch_Hamming74.vhd" />
   </ItemGroup>
   <PropertyGroup>
-    <HardwareStartPath>EncScheme.vhd</HardwareStartPath>
+    <HardwareStartPath>CPAScheme.vhd</HardwareStartPath>
     <SelectedFpga>MAX1000</SelectedFpga>
     <IoVoltage>3.3V</IoVoltage>
   </PropertyGroup>

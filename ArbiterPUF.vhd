@@ -21,7 +21,7 @@ ARCHITECTURE Behavioral OF arbiter_puf IS
     SIGNAL out_mux_6 : STD_LOGIC;
     SIGNAL out_mux_7 : STD_LOGIC;
     SIGNAL res_n : STD_LOGIC;
-    SIGNAL delay_n : STD_LOGIC := not delay;
+    SIGNAL delay_n : STD_LOGIC;
     
     COMPONENT mux_2to1 IS
         PORT (
@@ -77,7 +77,7 @@ BEGIN
         clock => clock,
         sel => challenge(2),
         a => out_mux_0,
-        b => out_mux_1,
+        b => out_mux_1, 
         x =>out_mux_2
     );
     
@@ -146,4 +146,11 @@ BEGIN
         q_n => res_n
     );
 
-END Behavioral;
+    PROCESS(clock)
+    BEGIN
+        IF rising_edge(clock) THEN
+            delay_n <= not delay;
+        END IF;
+    END PROCESS;
+    
+    END Behavioral;

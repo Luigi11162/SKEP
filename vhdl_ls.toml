@@ -2,6 +2,7 @@
 [Libraries]
 work.files = [
 	'ArbiterPUF.vhd',
+	'CPAScheme.vhd',
 	'ChaosMachine.vhd',
 	'DecScheme.vhd',
 	'EncScheme.vhd',
@@ -15,6 +16,7 @@ work.files = [
 [libraries.work]
 files = [
 	'ArbiterPUF.vhd',
+	'CPAScheme.vhd',
 	'ChaosMachine.vhd',
 	'DecScheme.vhd',
 	'EncScheme.vhd',

@@ -7,7 +7,7 @@ ENTITY dec_scheme IS
         clock : IN STD_LOGIC;
         challenge : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
         ciphertext : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-        helper_data : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
+        helper_data : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
         message : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
     );
 END dec_scheme;
@@ -23,6 +23,7 @@ ARCHITECTURE Behavioral OF dec_scheme IS
     
     COMPONENT arbiter_puf IS
         PORT(
+            reset : IN STD_LOGIC;
             delay : IN STD_LOGIC;
             clock : IN STD_LOGIC;
             challenge : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -44,7 +45,7 @@ ARCHITECTURE Behavioral OF dec_scheme IS
             clock : IN STD_LOGIC;
             message_data : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
             parity_data : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-            recovered_data : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
+            recovered_data : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
         );
     END COMPONENT;
     
@@ -52,6 +53,7 @@ BEGIN
     
     arbiter_puf_0: arbiter_puf
     PORT MAP(
+        reset => reset,
         delay => '1',
         clock => clock,
         challenge => challenge,
@@ -60,6 +62,7 @@ BEGIN
     
     arbiter_puf_1: arbiter_puf
     PORT MAP(
+        reset => reset,
         delay => '0',
         clock => clock,
         challenge => challenge,
@@ -68,6 +71,7 @@ BEGIN
     
     arbiter_puf_2: arbiter_puf
     PORT MAP(
+        reset => reset,
         delay => '0',
         clock => clock,
         challenge => challenge,
@@ -76,6 +80,7 @@ BEGIN
     
     arbiter_puf_3: arbiter_puf
     PORT MAP(
+        reset => reset,
         delay => '1',
         clock => clock,
         challenge => challenge,
