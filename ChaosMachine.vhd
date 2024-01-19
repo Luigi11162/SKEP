@@ -52,7 +52,7 @@ BEGIN
                     IF x = "0000" THEN
                         x <= "1111";
                     ELSE
-                        x(counter-1) <= (x(counter-1) XOR a(counter-1)) AND (x(counter-1) XOR b(counter-1)) AND (x(counter-1) XOR c(counter-1));
+                        x(counter-1) <= (x(counter-1) XOR a(counter-1)) AND (x(counter-1) AND b(counter-1)) AND (x(counter-1) OR c(counter-1));
                     END IF;
 
                     counter := counter +1;
